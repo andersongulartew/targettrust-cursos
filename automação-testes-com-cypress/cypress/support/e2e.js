@@ -16,5 +16,13 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
+
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+
+
+//Ordenação dos selectors a partir do inspect do Cypress
+Cypress.SelectorPlayground.defaults({
+    selectorPriority: ['data-*','id', 'class', 'tag', 'attributes', 'nth-child']
+})

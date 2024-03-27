@@ -132,15 +132,24 @@ describe("test aba webelements", ()=>{
         cy.get("select[name='dropdownlist'] option")
             .should("have.length", 10);
         // varrer os componentes validando os 10 itens
+        cy.get("select[name='dropdownlist'] option").then($list => {
+            const itens = [];
+            $list.each(function() {
+                itens.push(this.innerText)
+            })
 
+            expect(itens).to.include.members(['Item 1', 'Item 2', 'Item 3', 'Item 4','Item 5', 
+                'Item 6','Item 7', 'Item 8', 'Item 9', 'Item 10'])
+        })
 
+        cy.get("select[name='multiselectdropdown']")
+        .select(["Item 2", "Item 5", "Item 9"]);
 
-        
-        cy.get('select[name="multiselectdropdown"]')
-        .select(["Item 2", "Item 3", "Item 5"])
-        // todo varrer os componentes validando os 10 itens
-
-
+         // Identificar os 3 elementos selecionados
+         cy.get("select[name='multiselectdropdown']").then($el => {
+            expect($el.val()).to.have.length(3);
+            expect($el.val()).to.be.deep.equal(["item2", "item5", "item9"])
+        })
 
 
         cy.get('input[name="alertbtn"]').click() // alert
