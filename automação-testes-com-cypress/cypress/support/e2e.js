@@ -16,11 +16,11 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
-
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
-
+//Adiciona xpath a execução do cypress
+// require('cypress-xpath');
 
 //Ordenação dos selectors a partir do inspect do Cypress
 Cypress.SelectorPlayground.defaults({
